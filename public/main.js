@@ -369,17 +369,23 @@ var LoginComponent = /** @class */ (function () {
             username: this.username,
             password: this.password
         };
-        this.authService.authenticateUser(user).subscribe(function (data) {
-            if (data.success) {
-                _this.authService.storeUserData(data.token, data.user);
-                _this.flashMessagesService.show('Successfully logged in.', { cssClass: 'alert-success', timeout: 3000 });
-                _this.router.navigate(['dashboard']);
-            }
-            else {
-                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
-                _this.router.navigate(['login']);
-            }
-        });
+        if (this.username && this.password) {
+            this.authService.authenticateUser(user).subscribe(function (data) {
+                if (data.success) {
+                    _this.authService.storeUserData(data.token, data.user);
+                    _this.flashMessagesService.show('Successfully logged in.', { cssClass: 'alert-success', timeout: 3000 });
+                    _this.router.navigate(['dashboard']);
+                }
+                else {
+                    _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+                    _this.router.navigate(['login']);
+                }
+            });
+        }
+        else {
+            this.flashMessagesService.show('Please enter username and password.', { cssClass: 'alert-danger', timeout: 3000 });
+            this.router.navigate(['login']);
+        }
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -756,13 +762,13 @@ var AuthService = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        return this.http.post('http://localhost:3000/users/register', user, { headers: headers });
+        return this.http.post('http://rickymolnar.com:3000/users/register', user, { headers: headers });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers });
+        return this.http.post('http://rickymolnar.com:3000/users/authenticate', user, { headers: headers });
     };
     AuthService.prototype.getProfile = function () {
         this.loadToken();
@@ -770,7 +776,7 @@ var AuthService = /** @class */ (function () {
             'Authorization': this.authToken,
             'Content-Type': 'application/json'
         });
-        return this.http.get('http://localhost:3000/users/profile', { headers: headers });
+        return this.http.get('http://rickymolnar.com:3000/users/profile', { headers: headers });
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
