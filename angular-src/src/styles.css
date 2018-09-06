@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+	background: linear-gradient(to right, #303030 0%, #0c0c0c 100%);
+}
+
+.jumbotron {
+	padding-top: 40px;
+}
+
+#form-title {
+	color: white;
+}
+
+.flash-message {
+	text-align: center;
+	width: 30%;
+	margin-right: 35%;
+	margin-left: 35%;
+}
+
+.flash-message p {
+	margin-bottom: 0px;
+}

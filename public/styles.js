@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n"
+module.exports = "body {\n\tbackground: linear-gradient(to right, #303030 0%, #0c0c0c 100%);\n}\n\n.jumbotron {\n\tpadding-top: 40px;\n}\n\n#form-title {\n\tcolor: white;\n}\n\n.flash-message {\n\ttext-align: center;\n\twidth: 30%;\n\tmargin-right: 35%;\n\tmargin-left: 35%;\n}\n\n.flash-message p {\n\tmargin-bottom: 0px;\n}\n"
 
 /***/ }),
 
@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Projects\Dev\loginTemplate\angular-src\src\styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! E:\Projects\Dev\LoginTemplate\angular-src\src\styles.css */"./src/styles.css");
 
 
 /***/ })

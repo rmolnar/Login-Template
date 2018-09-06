@@ -1,6 +1,105 @@
 <div class="jumbotron text-center">
 	<h1>Welcome to the login system!</h1>
-	<p class="lead">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This web application was built using the MEAN stack.</p>
+	<p class="lead">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This single page web application was built using the MEAN stack (Angular 6) with Bootstrap.</p>
+	
+	<h5>What is a "single page web application"?</h5>
+	<p>First off, a website and a web application are not the same thing, although the line between them can sometimes be quite blurry. A website displays data for the user and is defined by its content while a web application is much more complex and dynamic and is defined by its interaction with the user. Examples of websites include blogs or news sites while examples of web applications include social media or online calendars. This login system was created to serve as a starting point for building robust and scalable web applications.</p>
+	<p>As you navigate around the application, you will notice that no new pages are ever loaded. Although the url in the address bar might change, there are no requests to load a new document from the server or to refresh a page. This is the beauty of a single page application! Navigating through the application and retrieving data from the server is virtually instantaneous as resources are dynamically loaded and added to the current page as necessary. This efficient method of delivering user experiences requires live communication with the backend web server and database, making it much more complex than a normal website.</p>
+
+
+	<h5>What is the MEAN stack?</h5>
+
+	<blockquote class="blockquote">
+  		<p class="mb-0"><em>"MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications.<br/>
+			The MEAN stack is MongoDB, Express.js, AngularJS (or Angular), and Node.js. Because all components of the MEAN stack support programs are written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments."</em></p>
+  		<footer class="blockquote-footer">MEAN (software bundle) <cite title="Wikipedia link to MEAN"><a href="https://en.wikipedia.org/wiki/MEAN_(software_bundle)">Wikipedia</a></cite></footer>
+	</blockquote>
+
+	<h5>What is Bootstrap?</h5>
+
+		<blockquote class="blockquote">
+  		<p class="mb-0"><em>"Bootstrap is a free and open-source front-end framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with front-end development only."</em></p>
+  		<footer class="blockquote-footer">Bootstrap (front-end framework) <cite title="Wikipedia link to Bootstrap"><a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">Wikipedia</a></cite></footer>
+	</blockquote>
+
+	<h5>Who made this?</h5>
+
+		<p>This application was made by Ricky Molnar. You can download a copy or view the source code on my <a href="https://github.com/rmolnar/Login-Template">GitHub</a> account. This application is <a href="https://www.fsf.org/about/what-is-free-software">free software</a> made available for public or private use.</p>
+		<p>You can email me at richardamolnar@gmail.com or follow me on twitter at <a href="https://twitter.com/ricky_molnar">@ricky_molnar</a>.</p>
+
+	<h3 id="timeline-title">Development timeline:</h3>
+	<div class="list-group">
+	  <div class="list-group-item list-group-item-primary flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">Application online!</h5>
+	      <small>August 24th, 2018</small>
+	    </div>
+	    <p class="mb-1">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p>
+	    <small>
+	    	<ul class="timeline-list">
+	    		<li>Set initial layout to the Bootswatch <a href="https://bootswatch.com/lux/">Lux</a> theme</li>
+	    		<li>Home, profile, dashboard, login, and registration pages</li>
+	    		<li>Front-end view routing and navigation in Angular 6</li>
+	    		<li>Highlighting of active page in navbar</li>
+	    		<li>Registration and login forms</li>
+	    		<li>Email format and form completion validation</li>	    		
+	    		<li>Get and post requests to backend Express server</li>
+	    		<li>User authentication</li>
+	    		<li>Password encryption</li>
+	    		<li>Local storage of id tokens to remember users</li>
+	    		<li>Authorization to prevent users without a valid token from accessing certain pages</li>
+	    		<li>Get user information for profile page</li>
+	    		<li>Flash notifications to communicate with the user</li>
+	    	</ul>
+	    </small>
+	  </div>
+
+	  <div class="list-group-item list-group-item-primary flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">First major update</h5>
+	      <small>September 7th, 2018</small>
+	    </div>
+	    <p class="mb-1">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p>
+	    <small>
+	    	<ul class="timeline-list">
+	    		<li>The first version of the homepage is now uploaded. I added the introduction, short description, and the development timeline that you're reading now!</li>
+	    		<li>Changed login from being based on username to being based on email address</li>
+	    		<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages</li>
+	    		<li>Completely reworked the login and registration forms so they look a lot nicer</li>
+	    		<li>Styled the site a bit and added the nifty dark gray graident background</li>
+	    		<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is</li>
+	    		<li>Added cute snippet of info to the dashboard page</li>
+	    		<li>Added Font Awesome icons to navigation links</li>
+	    	</ul>
+	    </small>
+	  </div>
+
+	  <div class="list-group-item list-group-item-secondary flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">Further development</h5>
+	      <small class="text-muted">Soon...</small>
+	    </div>
+	    <p class="mb-1">The following features are either planned or currently in development and not yet implemented.</p>
+	    <small>
+	    	<ul class="timeline-list">
+	    		<li>Mobile menu functionality and mobile styling</li>
+	    		<li>OAuth 2.0 protocol validation (login via social media)</li>
+	    		<li>Case insensitive user info</li>
+	    		<li>User info editing via profile page</li>
+	    		<li>Check if username or email is already taken</li>
+	    		<li>Email and password confirmation upon registration</li>
+	    		<li>Account verification via email</li>
+	    		<li>Password requirements</li>
+	    		<li>Prevent blank (but not null) info upon registration</li>
+	    		<li>Clear local storage if id token has been tampered with</li>
+	    		<li>Improved notification system</li>
+	    	</ul>
+	    </small>
+	  </div>
+	</div>
+
+	<p id="register-invite">Register or login to begin</p> 
+	
 	<div>
 		<a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-secondary" [routerLink]="['/login']">Login</a>
 	</div>

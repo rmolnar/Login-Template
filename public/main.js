@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n\n\t<flash-messages></flash-messages>\n\t<router-outlet></router-outlet>\n\n</div>"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n\t<flash-messages></flash-messages>\n\t<router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -110,6 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+/* harmony import */ var _guards_loggedin_guard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./guards/loggedin.guard */ "./src/app/guards/loggedin.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,22 +133,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-// Import services
+// Import services and guards
 
 
 
+
+// Declare routes
 var appRoutes = [
     { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"] },
-    { path: 'register', component: _components_register_register_component__WEBPACK_IMPORTED_MODULE_10__["RegisterComponent"] },
-    { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
+    { path: 'register', component: _components_register_register_component__WEBPACK_IMPORTED_MODULE_10__["RegisterComponent"], canActivate: [_guards_loggedin_guard__WEBPACK_IMPORTED_MODULE_17__["LoggedInGuard"]] },
+    { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"], canActivate: [_guards_loggedin_guard__WEBPACK_IMPORTED_MODULE_17__["LoggedInGuard"]] },
     { path: 'dashboard', component: _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_12__["DashboardComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] },
     { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_13__["ProfileComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]] }
 ];
+// Configure the injector and compiler and help organize related things together.
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            // State what components and directives belong to NgModule
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
                 _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
@@ -157,6 +162,7 @@ var AppModule = /** @class */ (function () {
                 _components_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_12__["DashboardComponent"],
                 _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_13__["ProfileComponent"]
             ],
+            // Declare what modules NgModule uses
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(appRoutes),
@@ -165,7 +171,8 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_6__["HttpModule"]
             ],
-            providers: [_services_validate_service__WEBPACK_IMPORTED_MODULE_14__["ValidateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"], _guards_auth_guard__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"]],
+            // Declare what services and guards are provided to NgModule
+            providers: [_services_validate_service__WEBPACK_IMPORTED_MODULE_14__["ValidateService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_15__["AuthService"], _guards_auth_guard__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"], _guards_loggedin_guard__WEBPACK_IMPORTED_MODULE_17__["LoggedInGuard"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
@@ -186,7 +193,7 @@ function tokenGetter() {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "h2 {\r\n\tcolor: white;\r\n}\r\n\r\n.link {\r\n\tcolor: white;\r\n}"
 
 /***/ }),
 
@@ -197,7 +204,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  dashboard works!\n</p>\n"
+module.exports = "<h2>\n\tHello, {{user.username}}!\n</h2>\n<p>\n\tThis is your dashboard. There is nothing here! That's because this login system is application agnostic. The \"dashboard\" serves as a placeholder for whatever service your application will deliver and needs to be protected by a user authentication system.<br/><br/> If you are reading this, thanks for examining my application. Follow me on <a href=\"https://twitter.com/ricky_molnar\" class=\"link\">Twitter</a>!\n</p>\n"
 
 /***/ }),
 
@@ -212,6 +219,8 @@ module.exports = "<p>\n  dashboard works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -222,10 +231,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.getProfile().subscribe(function (profile) {
+            _this.user = profile.user;
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
     };
     DashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -233,7 +253,8 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/components/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/components/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -249,7 +270,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".lead {\r\n\tcolor: black;\r\n}\r\n\r\n.list-group-item-primary {\r\n\tbackground-color: #fff;\r\n}\r\n\r\n.list-group-item-secondary {\r\n\tbackground-color: #eee;\r\n}\r\n\r\n#timeline-title {\r\n\tpadding-top: 30px;\r\n}\r\n\r\n.timeline-list {\r\n\tlist-style-position: inside;\r\n}\r\n\r\n.timeline-list a {\r\n\tcolor: darkslategray;\r\n\ttext-decoration: underline;\r\n}\r\n\r\n#register-invite {\r\n\tpadding-top: 20px;\r\n\tcolor: black;\r\n}\r\n\r\n.btn {\r\n\tmargin-left: 10px;\r\n\tmargin-right: 10px;\r\n\twidth: 160px;\r\n}\r\n"
 
 /***/ }),
 
@@ -260,7 +281,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\n\t<h1>Welcome to the login system!</h1>\n\t<p class=\"lead\">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This web application was built using the MEAN stack.</p>\n\t<div>\n\t\t<a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-secondary\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>"
+module.exports = "<div class=\"jumbotron text-center\">\n\t<h1>Welcome to the login system!</h1>\n\t<p class=\"lead\">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This single page web application was built using the MEAN stack (Angular 6) with Bootstrap.</p>\n\t\n\t<h5>What is a \"single page web application\"?</h5>\n\t<p>First off, a website and a web application are not the same thing, although the line between them can sometimes be quite blurry. A website displays data for the user and is defined by its content while a web application is much more complex and dynamic and is defined by its interaction with the user. Examples of websites include blogs or news sites while examples of web applications include social media or online calendars. This login system was created to serve as a starting point for building robust and scalable web applications.</p>\n\t<p>As you navigate around the application, you will notice that no new pages are ever loaded. Although the url in the address bar might change, there are no requests to load a new document from the server or to refresh a page. This is the beauty of a single page application! Navigating through the application and retrieving data from the server is virtually instantaneous as resources are dynamically loaded and added to the current page as necessary. This efficient method of delivering user experiences requires live communication with the backend web server and database, making it much more complex than a normal website.</p>\n\n\n\t<h5>What is the MEAN stack?</h5>\n\n\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications.<br/>\n\t\t\tThe MEAN stack is MongoDB, Express.js, AngularJS (or Angular), and Node.js. Because all components of the MEAN stack support programs are written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">MEAN (software bundle) <cite title=\"Wikipedia link to MEAN\"><a href=\"https://en.wikipedia.org/wiki/MEAN_(software_bundle)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>What is Bootstrap?</h5>\n\n\t\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"Bootstrap is a free and open-source front-end framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with front-end development only.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">Bootstrap (front-end framework) <cite title=\"Wikipedia link to Bootstrap\"><a href=\"https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>Who made this?</h5>\n\n\t\t<p>This application was made by Ricky Molnar. You can download a copy or view the source code on my <a href=\"https://github.com/rmolnar/Login-Template\">GitHub</a> account. This application is <a href=\"https://www.fsf.org/about/what-is-free-software\">free software</a> made available for public or private use.</p>\n\t\t<p>You can email me at richardamolnar@gmail.com or follow me on twitter at <a href=\"https://twitter.com/ricky_molnar\">@ricky_molnar</a>.</p>\n\n\t<h3 id=\"timeline-title\">Development timeline:</h3>\n\t<div class=\"list-group\">\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Application online!</h5>\n\t      <small>August 24th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Set initial layout to the Bootswatch <a href=\"https://bootswatch.com/lux/\">Lux</a> theme</li>\n\t    \t\t<li>Home, profile, dashboard, login, and registration pages</li>\n\t    \t\t<li>Front-end view routing and navigation in Angular 6</li>\n\t    \t\t<li>Highlighting of active page in navbar</li>\n\t    \t\t<li>Registration and login forms</li>\n\t    \t\t<li>Email format and form completion validation</li>\t    \t\t\n\t    \t\t<li>Get and post requests to backend Express server</li>\n\t    \t\t<li>User authentication</li>\n\t    \t\t<li>Password encryption</li>\n\t    \t\t<li>Local storage of id tokens to remember users</li>\n\t    \t\t<li>Authorization to prevent users without a valid token from accessing certain pages</li>\n\t    \t\t<li>Get user information for profile page</li>\n\t    \t\t<li>Flash notifications to communicate with the user</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">First major update</h5>\n\t      <small>September 7th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>The first version of the homepage is now uploaded. I added the introduction, short description, and the development timeline that you're reading now!</li>\n\t    \t\t<li>Changed login from being based on username to being based on email address</li>\n\t    \t\t<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages</li>\n\t    \t\t<li>Completely reworked the login and registration forms so they look a lot nicer</li>\n\t    \t\t<li>Styled the site a bit and added the nifty dark gray graident background</li>\n\t    \t\t<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is</li>\n\t    \t\t<li>Added cute snippet of info to the dashboard page</li>\n\t    \t\t<li>Added Font Awesome icons to navigation links</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-secondary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Further development</h5>\n\t      <small class=\"text-muted\">Soon...</small>\n\t    </div>\n\t    <p class=\"mb-1\">The following features are either planned or currently in development and not yet implemented.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Mobile menu functionality and mobile styling</li>\n\t    \t\t<li>OAuth 2.0 protocol validation (login via social media)</li>\n\t    \t\t<li>Case insensitive user info</li>\n\t    \t\t<li>User info editing via profile page</li>\n\t    \t\t<li>Check if username or email is already taken</li>\n\t    \t\t<li>Email and password confirmation upon registration</li>\n\t    \t\t<li>Account verification via email</li>\n\t    \t\t<li>Password requirements</li>\n\t    \t\t<li>Prevent blank (but not null) info upon registration</li>\n\t    \t\t<li>Clear local storage if id token has been tampered with</li>\n\t    \t\t<li>Improved notification system</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\t</div>\n\n\t<p id=\"register-invite\">Register or login to begin</p> \n\t\n\t<div>\n\t\t<a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-secondary\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -312,7 +333,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#form-title {\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.main{\r\n \tmargin: 50px 15px;\r\n}\r\n\r\n.form-group, label{\r\n\tmargin-bottom: 15px;\r\n}\r\n\r\ninput::-webkit-input-placeholder {\r\n    font-size: 11px;\r\n}\r\n\r\n.form-control {\r\n    height: auto !important;\r\n    padding: 8px 12px !important;\r\n}\r\n\r\n.input-group {\r\n    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21) !important;\r\n}\r\n\r\n#button {\r\n    width: 50%;\r\n    margin-left: 25%;\r\n    margin-right: 25%;\r\n    margin-top: 5px;    \r\n    margin-top: 28px;\r\n    padding: 6px 12px;\r\n}\r\n\r\n.main-center{\r\n \tmargin-top: 30px;\r\n \tmargin: 0 auto;\r\n    width: 500px;\r\n    padding: 10px 40px;\r\n\tbackground:#bbb;\r\n    color: #fff;\r\n    text-shadow: none;\r\n box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);\r\n}"
 
 /***/ }),
 
@@ -323,7 +344,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n\t<div class=\"form-group\">\n\t\t<label>Username</label>\n\t\t<input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n\t</div>\n\t<div class=\"form-group\">\n\t\t<label>Password</label>\n\t\t<input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n\t</div>\n\t<input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>"
+module.exports = "<div class=\"row main\">\n\t<div class=\"container\">\t\n\t\t<div class=\"main-center\">\n\t\t<h2 id=\"form-title\">Login</h2>\t\t\t\n\t\t\t<form (submit)=\"onLoginSubmit()\">\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"email\" class=\"cols-sm-2 control-label\">Email</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input [(ngModel)]=\"email\" type=\"text\" required=\"required\" class=\"form-control\" name=\"email\" id=\"email\"  placeholder=\"Enter your Email\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"password\" class=\"cols-sm-2 control-label\">Password</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input [(ngModel)]=\"password\" type=\"password\" required=\"required\" class=\"form-control\" name=\"password\" id=\"password\"  placeholder=\"Enter your Password\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group \">\n\t\t\t\t\t<input type=\"submit\" id=\"button\" class=\"btn btn-primary btn-lg btn-block\" value=\"Login\">\n\t\t\t\t</div>\t\t\t\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>\n\n"
 
 /***/ }),
 
@@ -342,6 +363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/validate.service */ "./src/app/services/validate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -355,21 +377,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(authService, router, flashMessagesService) {
+    function LoginComponent(authService, router, flashMessagesService, validateService) {
         this.authService = authService;
         this.router = router;
         this.flashMessagesService = flashMessagesService;
+        this.validateService = validateService;
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.onLoginSubmit = function () {
         var _this = this;
         var user = {
-            username: this.username,
+            email: this.email,
             password: this.password
         };
-        if (this.username && this.password) {
+        // If all info is entered, attempt to login
+        if (this.email && this.password) {
             this.authService.authenticateUser(user).subscribe(function (data) {
                 if (data.success) {
                     _this.authService.storeUserData(data.token, data.user);
@@ -383,7 +408,7 @@ var LoginComponent = /** @class */ (function () {
             });
         }
         else {
-            this.flashMessagesService.show('Please enter username and password.', { cssClass: 'alert-danger', timeout: 3000 });
+            this.flashMessagesService.show('Please enter email and password.', { cssClass: 'alert-danger', timeout: 3000 });
             this.router.navigate(['login']);
         }
     };
@@ -395,7 +420,8 @@ var LoginComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"]])
+            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"],
+            _services_validate_service__WEBPACK_IMPORTED_MODULE_4__["ValidateService"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -411,7 +437,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg-dark {\r\n\tbackground-color: #34363a !important;\r\n}\r\n\r\n.navbar-right {\r\n\tmargin-right: 20%;\r\n}\r\n\r\ni {\r\n\tpadding-right: 3px;\r\n\tfont-size: 14px;\r\n}"
 
 /***/ }),
 
@@ -422,7 +448,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default navbar-expand-md navbar-dark bg-dark mb-4\">\n      <a class=\"navbar-brand\" href=\"#\">Login Template</a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n      </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n        <!-- Left navbar  -->\n        <ul class=\"navbar-nav mr-auto\">\n          <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/']\">Home</a>\n          </li>\n        </ul>\n\n        <!-- Right navbar  -->\n        <ul class=\"navbar-nav mr-auto\">\n          <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login</a>\n          </li>\n          \n          <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\" (click)=\"onLogoutClick()\">Logout</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile</a>\n          </li>\n        </ul>\n\n      </div>\n    </nav>"
+module.exports = "<nav class=\"navbar navbar-default navbar-expand-md navbar-dark bg-dark mb-4\">\n      <a class=\"navbar-brand\" href=\"#\">Login Template</a>\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n      </button>\n      <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n\n        <!-- Left navbar  -->\n        <ul class=\"navbar-nav mr-auto\">\n          <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/']\"><i class=\"fas fa-home\"></i> Home</a>\n          </li>\n        </ul>\n\n        <!-- Right navbar  -->\n        <ul class=\"navbar-nav navbar-right \">\n          <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/login']\"><i class=\"fas fa-sign-in-alt\"></i> Login</a>\n          </li>\n          \n          <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/register']\"><i class=\"fas fa-user-plus\"></i> Register</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\" (click)=\"onLogoutClick()\"><i class=\"fas fa-sign-out-alt\"></i> Logout</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\"><i class=\"fab fa-node-js\"></i> Dashboard</a>\n          </li>\n\n          <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] =\"{exact:true}\" class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\"><i class=\"fas fa-user-cog\"></i> Profile</a>\n          </li>\n        </ul>\n\n      </div>\n    </nav>"
 
 /***/ }),
 
@@ -495,7 +521,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".page-header {\r\n\tcolor: white;\r\n}\r\n\r\n.list-group-item {\r\n\tbackground-color: #333;\r\n\tcolor: white;\r\n\twidth: 60%;\r\n\tmargin-left: 20%;\r\n\tmargin-right: 20%;\r\n}"
 
 /***/ }),
 
@@ -506,7 +532,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\n\t<h2 class=\"page-header\">{{user.name}}</h2>\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\">Username: {{user.username}}</li>\n\t\t<li class=\"list-group-item\">Email: {{user.email}}</li>\n\t</ul>\n</div>"
+module.exports = "<div *ngIf=\"user\">\n\t<h2 class=\"page-header\">Profile</h2>\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\">Username: {{user.username}}</li>\n\t\t<li class=\"list-group-item\">Email: {{user.email}}</li>\n\t</ul>\n</div>"
 
 /***/ }),
 
@@ -572,7 +598,7 @@ var ProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "#form-title {\r\n    padding-top: 10px;\r\n    padding-bottom: 10px;\r\n}\r\n\r\n.main{\r\n \tmargin: 50px 15px;\r\n}\r\n\r\n.form-group, label{\r\n\tmargin-bottom: 15px;\r\n}\r\n\r\ninput::-webkit-input-placeholder {\r\n    font-size: 11px;\r\n}\r\n\r\n.form-control {\r\n    height: auto !important;\r\n    padding: 8px 12px !important;\r\n}\r\n\r\n.input-group {\r\n    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21) !important;\r\n}\r\n\r\n#button {\r\n    width: 50%;\r\n    margin-left: 25%;\r\n    margin-right: 25%;\r\n    margin-top: 5px;    \r\n    margin-top: 28px;\r\n    padding: 6px 12px;\r\n}\r\n\r\n.main-center{\r\n \tmargin-top: 30px;\r\n \tmargin: 0 auto;\r\n    width: 500px;\r\n    padding: 10px 40px;\r\n\tbackground:#bbb;\r\n    color: #fff;\r\n    text-shadow: none;\r\n box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);\r\n}"
 
 /***/ }),
 
@@ -583,7 +609,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n\t<div class=\"form-group\">\n\t\t<label>Name</label>\n\t\t<input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n\t</div>\n\t<div class=\"form-group\">\n\t\t<label>Username</label>\n\t\t<input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n\t</div>\n\t<div class=\"form-group\">\n\t\t<label>Email</label>\n\t\t<input type=\"email\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n\t</div>\n\t<div class=\"form-group\">\n\t\t<label>Password</label>\n\t\t<input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n\t</div>\n\t<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>"
+module.exports = "\t<div class=\"row main\">\n\t<div class=\"container\">\t\n\t\t<div class=\"main-center\">\n\t\t<h2 id=\"form-title\">Register</h2>\t\t\t\n\t\t\t<form (submit)=\"onRegisterSubmit()\">\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"username\" class=\"cols-sm-2 control-label\">Username</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input [(ngModel)]=\"username\" type=\"text\" required=\"required\" class=\"form-control\" name=\"username\" id=\"username\"  placeholder=\"Enter your Username\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"email\" class=\"cols-sm-2 control-label\">Your Email</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input [(ngModel)]=\"email\" type=\"text\" required=\"required\" class=\"form-control\" name=\"email\" id=\"email\"  placeholder=\"Enter your Email\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"email\" class=\"cols-sm-2 control-label\">Confirm Email</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input type=\"text\" required=\"required\" class=\"form-control\" name=\"confirm-email\" id=\"confirm-email\"  placeholder=\"Confirm your Email\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"password\" class=\"cols-sm-2 control-label\">Password</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input [(ngModel)]=\"password\" type=\"password\" required=\"required\" class=\"form-control\" name=\"password\" id=\"password\"  placeholder=\"Enter your Password\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"confirm\" class=\"cols-sm-2 control-label\">Confirm Password</label>\n\t\t\t\t\t<div class=\"cols-sm-10\">\n\t\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t\t<input type=\"password\" required=\"required\" class=\"form-control\" name=\"confirm-password\" id=\"confirm-password\"  placeholder=\"Confirm your Password\"/>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group \">\n\t\t\t\t\t<input type=\"submit\" id=\"button\" class=\"btn btn-primary btn-lg btn-block\" value=\"Submit\">\n\t\t\t\t</div>\t\t\t\n\t\t\t</form>\n\t\t</div>\n\t</div>\n</div>\n\n"
 
 /***/ }),
 
@@ -629,17 +655,16 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.onRegisterSubmit = function () {
         var _this = this;
         var user = {
-            name: this.name,
             email: this.email,
             username: this.username,
             password: this.password
         };
-        // Required fields
+        // Make sure user entered all fields
         if (!this.validateService.validateRegister(user)) {
             this.flashMessagesService.show('Please fill in all fields.', { cssClass: 'alert-danger', timeout: 3000 });
             return false;
         }
-        // Validate email
+        // Make sure email is in correct format
         if (!this.validateService.validateEmail(user.email)) {
             this.flashMessagesService.show('Please enter a valid email address.', { cssClass: 'alert-danger', timeout: 3000 });
             return false;
@@ -729,6 +754,61 @@ var AuthGuard = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/guards/loggedin.guard.ts":
+/*!******************************************!*\
+  !*** ./src/app/guards/loggedin.guard.ts ***!
+  \******************************************/
+/*! exports provided: LoggedInGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoggedInGuard", function() { return LoggedInGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var LoggedInGuard = /** @class */ (function () {
+    function LoggedInGuard(authService, router, flashMessagesService) {
+        this.authService = authService;
+        this.router = router;
+        this.flashMessagesService = flashMessagesService;
+    }
+    LoggedInGuard.prototype.canActivate = function () {
+        if (this.authService.loggedIn()) {
+            this.flashMessagesService.show('You are already logged in.', { cssClass: 'alert-danger', timeout: 3000 });
+            this.router.navigate(['/dashboard']);
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+    LoggedInGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"]])
+    ], LoggedInGuard);
+    return LoggedInGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/auth.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/auth.service.ts ***!
@@ -762,13 +842,15 @@ var AuthService = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        return this.http.post('http://rickymolnar.com:3000/users/register', user, { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com for production
+        return this.http.post('http://localhost:3000/users/register', user, { headers: headers });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        return this.http.post('http://rickymolnar.com:3000/users/authenticate', user, { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com for production
+        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers });
     };
     AuthService.prototype.getProfile = function () {
         this.loadToken();
@@ -776,7 +858,8 @@ var AuthService = /** @class */ (function () {
             'Authorization': this.authToken,
             'Content-Type': 'application/json'
         });
-        return this.http.get('http://rickymolnar.com:3000/users/profile', { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com for production
+        return this.http.get('http://localhost:3000/users/profile', { headers: headers });
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
@@ -840,14 +923,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ValidateService = /** @class */ (function () {
     function ValidateService() {
     }
+    // Verify that all registration information has been entered
     ValidateService.prototype.validateRegister = function (user) {
-        if (user.name == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
+        if (user.email == undefined || user.username == undefined || user.password == undefined) {
             return false;
         }
         else {
             return true;
         }
     };
+    // Make sure that the email is in the correct format
     ValidateService.prototype.validateEmail = function (email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
@@ -925,7 +1010,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Projects\Dev\loginTemplate\angular-src\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\Projects\Dev\LoginTemplate\angular-src\src\main.ts */"./src/main.ts");
 
 
 /***/ })

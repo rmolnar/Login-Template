@@ -6,18 +6,18 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Injectable() 
 
-export class AuthGuard implements CanActivate{
+export class LoggedInGuard implements CanActivate{
 	constructor(private authService: AuthService, private router: Router, private flashMessagesService: FlashMessagesService){
 
 	}
 
 	canActivate() {
 		if(this.authService.loggedIn()){
-			return true;
+			this.flashMessagesService.show('You are already logged in.', {cssClass: 'alert-danger', timeout: 3000});
+			this.router.navigate(['/dashboard']);
+			return false;			
 		} else {
-			this.flashMessagesService.show('You must be logged in.', {cssClass: 'alert-danger', timeout: 3000});
-			this.router.navigate(['/login']);
-			return false;
+			return true;
 		}
 	}
 }

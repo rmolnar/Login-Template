@@ -1,0 +1,12 @@
+.bg-dark {
+	background-color: #34363a !important;
+}
+
+.navbar-right {
+	margin-right: 20%;
+}
+
+i {
+	padding-right: 3px;
+	font-size: 14px;
+}

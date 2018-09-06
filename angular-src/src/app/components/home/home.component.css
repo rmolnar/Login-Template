@@ -1,0 +1,35 @@
+.lead {
+	color: black;
+}
+
+.list-group-item-primary {
+	background-color: #fff;
+}
+
+.list-group-item-secondary {
+	background-color: #eee;
+}
+
+#timeline-title {
+	padding-top: 30px;
+}
+
+.timeline-list {
+	list-style-position: inside;
+}
+
+.timeline-list a {
+	color: darkslategray;
+	text-decoration: underline;
+}
+
+#register-invite {
+	padding-top: 20px;
+	color: black;
+}
+
+.btn {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 160px;
+}

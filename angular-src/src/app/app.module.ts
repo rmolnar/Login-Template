@@ -1,13 +1,11 @@
 // Import modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-
 
 // Import components
 import { AppComponent } from './app.component';
@@ -18,23 +16,27 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
-// Import services
+// Import services and guards
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { LoggedInGuard } from './guards/loggedin.guard';
 
 
-
+// Declare routes
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
+  {path:'register', component: RegisterComponent, canActivate:[LoggedInGuard]},
+  {path:'login', component: LoginComponent, canActivate:[LoggedInGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
 ]
 
 
+// Configure the injector and compiler and help organize related things together.
 @NgModule({
+
+  // State what components and directives belong to NgModule
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent
   ],
+
+  // Declare what modules NgModule uses
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
@@ -52,9 +56,13 @@ const appRoutes: Routes = [
     HttpClientModule,
     HttpModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+
+  // Declare what services and guards are provided to NgModule
+  providers: [ValidateService, AuthService, AuthGuard, LoggedInGuard],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
 
 export function tokenGetter() {

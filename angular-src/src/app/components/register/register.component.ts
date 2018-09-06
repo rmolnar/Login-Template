@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 
 export class RegisterComponent implements OnInit {
 
-	name: String;
 	username: String;
 	email: String;
 	password: String;
@@ -31,19 +30,18 @@ export class RegisterComponent implements OnInit {
 
   onRegisterSubmit(){
   	const user = {
-  		name: this.name,
   		email: this.email,
   		username: this.username,
   		password: this.password
   	}
 
-  	// Required fields
+  	// Make sure user entered all fields
   	if(!this.validateService.validateRegister(user)){
   		this.flashMessagesService.show('Please fill in all fields.', {cssClass: 'alert-danger', timeout: 3000});
   		return false;
   	}
 
-  	// Validate email
+  	// Make sure email is in correct format
   	if(!this.validateService.validateEmail(user.email)){
   		this.flashMessagesService.show('Please enter a valid email address.', {cssClass: 'alert-danger', timeout: 3000});
   		return false;

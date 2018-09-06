@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ValidateService } from '../../services/validate.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class LoginComponent implements OnInit {
 
-	username: String;
+	email: String;
 	password: String;
 
   constructor(
   	private authService: AuthService,
   	private router: Router,
-  	private flashMessagesService: FlashMessagesService
+  	private flashMessagesService: FlashMessagesService,
+    private validateService: ValidateService
   	) { }
 
   ngOnInit() {
@@ -24,12 +26,12 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit(){
   	const user = {
-  		username: this.username,
+  		email: this.email,
   		password: this.password
   	}
 
-
-    if (this.username && this.password){
+    // If all info is entered, attempt to login
+    if (this.email && this.password){
     	this.authService.authenticateUser(user).subscribe(data => {
     		if((data as any).success){
     			this.authService.storeUserData((data as any).token, (data as any).user);
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
     		}
     	});
     } else {
-       this.flashMessagesService.show('Please enter username and password.', {cssClass: 'alert-danger', timeout: 3000});
+       this.flashMessagesService.show('Please enter email and password.', {cssClass: 'alert-danger', timeout: 3000});
        this.router.navigate(['login']);
     }
   }
