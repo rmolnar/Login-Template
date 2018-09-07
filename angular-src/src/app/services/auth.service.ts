@@ -18,7 +18,6 @@ export class AuthService {
 	    let headers= new HttpHeaders({
 	    	'Content-Type': 'application/json'
 	    });
-	    // Change to localhost:3000 for development and rickymolnar.com for production
 	    return this.http.post('http://localhost:3000/users/register', user, {headers: headers});
 	  }
 
@@ -26,7 +25,6 @@ export class AuthService {
 	    let headers= new HttpHeaders({
 	    	'Content-Type': 'application/json'
 	    });
-	    // Change to localhost:3000 for development and rickymolnar.com for production
 	    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers});
 	}
 
@@ -36,7 +34,6 @@ export class AuthService {
 		      'Authorization': this.authToken,
 		      'Content-Type':'application/json'
 		});﻿
-	    // Change to localhost:3000 for development and rickymolnar.com for production
 	    return this.http.get('http://localhost:3000/users/profile', {headers: headers});
 	}
 

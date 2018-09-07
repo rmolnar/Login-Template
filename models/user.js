@@ -30,6 +30,29 @@ module.exports.getUserByEmail = function(email, callback){
 	User.findOne(query, callback);
 }
 
+// Repeat validation of user registration info on the server side to prevent any funny business
+module.exports.validateUser = function(user){
+	if(user.email == undefined || user.username == undefined || user.password == undefined){
+		return false;
+	}
+
+	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if(!re.test(user.email)){
+		return false;
+	}
+
+	if(!user.password.length >= 8){
+		return false;
+	}
+
+	let numbers = /[0-9]/g;
+	if(!user.password.match(numbers)){
+		return false;
+	}
+
+	return true;
+}
+
 module.exports.addUser = function(newUser, callback){
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(newUser.password, salt, (err, hash) => {

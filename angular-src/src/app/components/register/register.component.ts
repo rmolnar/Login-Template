@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
 
   onRegisterSubmit(){
   	const user = {
-  		email: this.email,
-  		username: this.username,
+  		email: this.email.toLowerCase().replace(/\s/g, ""),
+  		username: this.username.toLowerCase().replace(/\s/g, ""),
   		password: this.password
   	}
 
@@ -46,6 +46,18 @@ export class RegisterComponent implements OnInit {
   		this.flashMessagesService.show('Please enter a valid email address.', {cssClass: 'alert-danger', timeout: 3000});
   		return false;
   	}
+
+    // Make sure password is at least 8 characters
+    if(!this.validateService.validatePasswordLength(user.password)){
+      this.flashMessagesService.show('Password must be at least 8 characters.', {cssClass: 'alert-danger', timeout: 3000});
+      return false;
+    }
+
+    // Make sure password contains a number
+    if (!this.validateService.validatePasswordNumber(user.password)){
+      this.flashMessagesService.show('Password must contain a number.', {cssClass: 'alert-danger', timeout: 3000});
+      return false;      
+    }
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {

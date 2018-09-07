@@ -8,15 +8,13 @@ const User = require('../models/user');
 // Register
 router.post('/register', (req, res, next) => {
 	let newUser = new User({
-		firstname: req.body.firstname,
-		lastname: req.body.lastname,
-		email: req.body.email,
-		username: req.body.username,
+		email: req.body.email.toLowerCase().replace(/\s/g, ""),
+		username: req.body.username.toLowerCase().replace(/\s/g, ""),
 		password: req.body.password
 	});
 
 	User.addUser(newUser, (err, user) => {
-		if(err){
+		if(err || !User.validateUser(newUser)){
 			res.json({success: false, msg:'Failed to register user.'});
 		} else {
 			res.json({success: true, msg:'User registered'});

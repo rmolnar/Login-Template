@@ -7,13 +7,13 @@ export class ValidateService {
 
   constructor() { }
 
-  // Verify that all registration information has been entered
+  // Verify that all registration information has been entered and there are no nulls/spaces
   validateRegister(user) {
   	if(user.email == undefined || user.username == undefined || user.password == undefined){
   		return false;
   	} else {
-  		return true;
-  	}
+      return true;
+    }
   }
 
   // Make sure that the email is in the correct format
@@ -21,4 +21,24 @@ export class ValidateService {
   	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   	return re.test(email);
   }
+
+  // Make sure password is long enough
+  validatePasswordLength(password) {
+    if(password.length >= 8){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // Make sure password contains a number
+  validatePasswordNumber(password) {
+    let numbers = /[0-9]/g;
+    if(password.match(numbers)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

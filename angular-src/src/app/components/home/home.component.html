@@ -74,6 +74,24 @@
 	    </small>
 	  </div>
 
+	  <div class="list-group-item list-group-item-primary flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">Validation update</h5>
+	      <small>September XX, 2018</small>
+	    </div>
+	    <p class="mb-1">Added and fixed features, mostly focusing on user registration/validation.</p>
+	    <small>
+	    	<ul class="timeline-list">
+	    		<li>Added server side validation of registration information to prevent funny business from hackers.</li>
+	    		<li>Fixed a bug that caused passport.js to report an error on the profile route.</li>
+	    		<li>Added password requirements (must be at least 8 characters and contain a number)</li>
+	    		<li>Registration and login forms now convert emails and usernames to lowercase. Uppercase characters in user credentials are no longer possible.</li>
+	    		<li>Upon registration, remove all whitespace or null characters from username and email.</li>
+	    		<li>Changed some styling: removed "text-transform: uppercase" which led to username ambiguity.</li>
+	    	</ul>
+	    </small>
+	  </div>
+
 	  <div class="list-group-item list-group-item-secondary flex-column align-items-start">
 	    <div class="d-flex w-100 justify-content-between">
 	      <h5 class="mb-1">Further development</h5>
@@ -84,15 +102,13 @@
 	    	<ul class="timeline-list">
 	    		<li>Mobile menu functionality and mobile styling</li>
 	    		<li>OAuth 2.0 protocol validation (login via social media)</li>
-	    		<li>Case insensitive user info</li>
 	    		<li>User info editing via profile page</li>
 	    		<li>Check if username or email is already taken</li>
 	    		<li>Email and password confirmation upon registration</li>
 	    		<li>Account verification via email</li>
-	    		<li>Password requirements</li>
-	    		<li>Prevent blank (but not null) info upon registration</li>
 	    		<li>Clear local storage if id token has been tampered with</li>
 	    		<li>Improved notification system</li>
+	    		<li>Forgot password link</li>
 	    	</ul>
 	    </small>
 	  </div>
