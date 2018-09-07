@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n\tbackground: linear-gradient(to right, #303030 0%, #0c0c0c 100%);\n}\n\n.jumbotron {\n\tpadding-top: 40px;\n}\n\n#form-title {\n\tcolor: white;\n}\n\n.flash-message {\n\ttext-align: center;\n\twidth: 30%;\n\tmargin-right: 35%;\n\tmargin-left: 35%;\n}\n\n.flash-message p {\n\tmargin-bottom: 0px;\n}\n"
+module.exports = "body {\n\tbackground: linear-gradient(to right, #303030 0%, #0c0c0c 100%);\n}\n\n.jumbotron {\n\tpadding-top: 40px;\n}\n\n#form-title {\n\tcolor: white;\n}\n\n.flash-message {\n\ttext-align: center;\n\twidth: 30%;\n\tmargin-right: 35%;\n\tmargin-left: 35%;\n}\n\n.flash-message p {\n\tmargin-bottom: 0px;\n}\n\nh1, h2, h3, h4, h5, h6 {\n\ttext-transform: none;\n}"
 
 /***/ }),
 

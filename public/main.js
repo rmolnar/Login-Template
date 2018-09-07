@@ -204,7 +204,7 @@ module.exports = "h2 {\r\n\tcolor: white;\r\n}\r\n\r\n.link {\r\n\tcolor: white;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n\tHello, {{user.username}}!\n</h2>\n<p>\n\tThis is your dashboard. There is nothing here! That's because this login system is application agnostic. The \"dashboard\" serves as a placeholder for whatever service your application will deliver and needs to be protected by a user authentication system.<br/><br/> If you are reading this, thanks for examining my application. Follow me on <a href=\"https://twitter.com/ricky_molnar\" class=\"link\">Twitter</a>!\n</p>\n"
+module.exports = "<h2>\n\tHello, {{username}}!\n</h2>\n<p>\n\tThis is your dashboard. There is nothing here! That's because this login system is application agnostic. The \"dashboard\" serves as a placeholder for whatever service your application will deliver and needs to be protected by a user authentication system.<br/><br/> If you are reading this, thanks for examining my application. Follow me on <a href=\"https://twitter.com/ricky_molnar\" class=\"link\">Twitter</a>!\n</p>\n"
 
 /***/ }),
 
@@ -242,6 +242,7 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         this.authService.getProfile().subscribe(function (profile) {
             _this.user = profile.user;
+            _this.username = _this.user.username;
         }, function (err) {
             console.log(err);
             return false;
@@ -281,7 +282,7 @@ module.exports = ".lead {\r\n\tcolor: black;\r\n}\r\n\r\n.list-group-item-primar
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\n\t<h1>Welcome to the login system!</h1>\n\t<p class=\"lead\">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This single page web application was built using the MEAN stack (Angular 6) with Bootstrap.</p>\n\t\n\t<h5>What is a \"single page web application\"?</h5>\n\t<p>First off, a website and a web application are not the same thing, although the line between them can sometimes be quite blurry. A website displays data for the user and is defined by its content while a web application is much more complex and dynamic and is defined by its interaction with the user. Examples of websites include blogs or news sites while examples of web applications include social media or online calendars. This login system was created to serve as a starting point for building robust and scalable web applications.</p>\n\t<p>As you navigate around the application, you will notice that no new pages are ever loaded. Although the url in the address bar might change, there are no requests to load a new document from the server or to refresh a page. This is the beauty of a single page application! Navigating through the application and retrieving data from the server is virtually instantaneous as resources are dynamically loaded and added to the current page as necessary. This efficient method of delivering user experiences requires live communication with the backend web server and database, making it much more complex than a normal website.</p>\n\n\n\t<h5>What is the MEAN stack?</h5>\n\n\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications.<br/>\n\t\t\tThe MEAN stack is MongoDB, Express.js, AngularJS (or Angular), and Node.js. Because all components of the MEAN stack support programs are written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">MEAN (software bundle) <cite title=\"Wikipedia link to MEAN\"><a href=\"https://en.wikipedia.org/wiki/MEAN_(software_bundle)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>What is Bootstrap?</h5>\n\n\t\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"Bootstrap is a free and open-source front-end framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with front-end development only.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">Bootstrap (front-end framework) <cite title=\"Wikipedia link to Bootstrap\"><a href=\"https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>Who made this?</h5>\n\n\t\t<p>This application was made by Ricky Molnar. You can download a copy or view the source code on my <a href=\"https://github.com/rmolnar/Login-Template\">GitHub</a> account. This application is <a href=\"https://www.fsf.org/about/what-is-free-software\">free software</a> made available for public or private use.</p>\n\t\t<p>You can email me at richardamolnar@gmail.com or follow me on twitter at <a href=\"https://twitter.com/ricky_molnar\">@ricky_molnar</a>.</p>\n\n\t<h3 id=\"timeline-title\">Development timeline:</h3>\n\t<div class=\"list-group\">\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Application online!</h5>\n\t      <small>August 24th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Set initial layout to the Bootswatch <a href=\"https://bootswatch.com/lux/\">Lux</a> theme</li>\n\t    \t\t<li>Home, profile, dashboard, login, and registration pages</li>\n\t    \t\t<li>Front-end view routing and navigation in Angular 6</li>\n\t    \t\t<li>Highlighting of active page in navbar</li>\n\t    \t\t<li>Registration and login forms</li>\n\t    \t\t<li>Email format and form completion validation</li>\t    \t\t\n\t    \t\t<li>Get and post requests to backend Express server</li>\n\t    \t\t<li>User authentication</li>\n\t    \t\t<li>Password encryption</li>\n\t    \t\t<li>Local storage of id tokens to remember users</li>\n\t    \t\t<li>Authorization to prevent users without a valid token from accessing certain pages</li>\n\t    \t\t<li>Get user information for profile page</li>\n\t    \t\t<li>Flash notifications to communicate with the user</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">First major update</h5>\n\t      <small>September 7th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>The first version of the homepage is now uploaded. I added the introduction, short description, and the development timeline that you're reading now!</li>\n\t    \t\t<li>Changed login from being based on username to being based on email address</li>\n\t    \t\t<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages</li>\n\t    \t\t<li>Completely reworked the login and registration forms so they look a lot nicer</li>\n\t    \t\t<li>Styled the site a bit and added the nifty dark gray graident background</li>\n\t    \t\t<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is</li>\n\t    \t\t<li>Added cute snippet of info to the dashboard page</li>\n\t    \t\t<li>Added Font Awesome icons to navigation links</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-secondary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Further development</h5>\n\t      <small class=\"text-muted\">Soon...</small>\n\t    </div>\n\t    <p class=\"mb-1\">The following features are either planned or currently in development and not yet implemented.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Mobile menu functionality and mobile styling</li>\n\t    \t\t<li>OAuth 2.0 protocol validation (login via social media)</li>\n\t    \t\t<li>Case insensitive user info</li>\n\t    \t\t<li>User info editing via profile page</li>\n\t    \t\t<li>Check if username or email is already taken</li>\n\t    \t\t<li>Email and password confirmation upon registration</li>\n\t    \t\t<li>Account verification via email</li>\n\t    \t\t<li>Password requirements</li>\n\t    \t\t<li>Prevent blank (but not null) info upon registration</li>\n\t    \t\t<li>Clear local storage if id token has been tampered with</li>\n\t    \t\t<li>Improved notification system</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\t</div>\n\n\t<p id=\"register-invite\">Register or login to begin</p> \n\t\n\t<div>\n\t\t<a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-secondary\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>"
+module.exports = "<div class=\"jumbotron text-center\">\n\t<h1>Welcome to the login system!</h1>\n\t<p class=\"lead\">Welcome to the login system that I built from scratch as a template that can be forked and used for any website that requires a login system. This single page web application was built using the MEAN stack (Angular 6) with Bootstrap.</p>\n\t\n\t<h5>What is a \"single page web application\"?</h5>\n\t<p>First off, a website and a web application are not the same thing, although the line between them can sometimes be quite blurry. A website displays data for the user and is defined by its content while a web application is much more complex and dynamic and is defined by its interaction with the user. Examples of websites include blogs or news sites while examples of web applications include social media or online calendars. This login system was created to serve as a starting point for building robust and scalable web applications.</p>\n\t<p>As you navigate around the application, you will notice that no new pages are ever loaded. Although the url in the address bar might change, there are no requests to load a new document from the server or to refresh a page. This is the beauty of a single page application! Navigating through the application and retrieving data from the server is virtually instantaneous as resources are dynamically loaded and added to the current page as necessary. This efficient method of delivering user experiences requires live communication with the backend web server and database, making it much more complex than a normal website.</p>\n\n\n\t<h5>What is the MEAN stack?</h5>\n\n\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"MEAN is a free and open-source JavaScript software stack for building dynamic web sites and web applications.<br/>\n\t\t\tThe MEAN stack is MongoDB, Express.js, AngularJS (or Angular), and Node.js. Because all components of the MEAN stack support programs are written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">MEAN (software bundle) <cite title=\"Wikipedia link to MEAN\"><a href=\"https://en.wikipedia.org/wiki/MEAN_(software_bundle)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>What is Bootstrap?</h5>\n\n\t\t<blockquote class=\"blockquote\">\n  \t\t<p class=\"mb-0\"><em>\"Bootstrap is a free and open-source front-end framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many earlier web frameworks, it concerns itself with front-end development only.\"</em></p>\n  \t\t<footer class=\"blockquote-footer\">Bootstrap (front-end framework) <cite title=\"Wikipedia link to Bootstrap\"><a href=\"https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)\">Wikipedia</a></cite></footer>\n\t</blockquote>\n\n\t<h5>Who made this?</h5>\n\n\t\t<p>This application was made by Ricky Molnar. You can download a copy or view the source code on my <a href=\"https://github.com/rmolnar/Login-Template\">GitHub</a> account. This application is <a href=\"https://www.fsf.org/about/what-is-free-software\">free software</a> made available for public or private use.</p>\n\t\t<p>You can email me at richardamolnar@gmail.com or follow me on twitter at <a href=\"https://twitter.com/ricky_molnar\">@ricky_molnar</a>.</p>\n\n\t<h3 id=\"timeline-title\">Development timeline:</h3>\n\t<div class=\"list-group\">\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Application online!</h5>\n\t      <small>August 24th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Set initial layout to the Bootswatch <a href=\"https://bootswatch.com/lux/\">Lux</a> theme</li>\n\t    \t\t<li>Home, profile, dashboard, login, and registration pages</li>\n\t    \t\t<li>Front-end view routing and navigation in Angular 6</li>\n\t    \t\t<li>Highlighting of active page in navbar</li>\n\t    \t\t<li>Registration and login forms</li>\n\t    \t\t<li>Email format and form completion validation</li>\t    \t\t\n\t    \t\t<li>Get and post requests to backend Express server</li>\n\t    \t\t<li>User authentication</li>\n\t    \t\t<li>Password encryption</li>\n\t    \t\t<li>Local storage of id tokens to remember users</li>\n\t    \t\t<li>Authorization to prevent users without a valid token from accessing certain pages</li>\n\t    \t\t<li>Get user information for profile page</li>\n\t    \t\t<li>Flash notifications to communicate with the user</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">First major update</h5>\n\t      <small>September 7th, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>The first version of the homepage is now uploaded. I added the introduction, short description, and the development timeline that you're reading now!</li>\n\t    \t\t<li>Changed login from being based on username to being based on email address</li>\n\t    \t\t<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages</li>\n\t    \t\t<li>Completely reworked the login and registration forms so they look a lot nicer</li>\n\t    \t\t<li>Styled the site a bit and added the nifty dark gray graident background</li>\n\t    \t\t<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is</li>\n\t    \t\t<li>Added cute snippet of info to the dashboard page</li>\n\t    \t\t<li>Added Font Awesome icons to navigation links</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-primary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Validation update</h5>\n\t      <small>September 8, 2018</small>\n\t    </div>\n\t    <p class=\"mb-1\">Added and fixed features, mostly focusing on user registration/validation.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Added server side validation of registration information to prevent funny business from hackers.</li>\n\t    \t\t<li>Fixed a bug that caused passport.js to report an error on the profile route.</li>\n\t    \t\t<li>Added password requirements (must be at least 8 characters and contain a number)</li>\n\t    \t\t<li>Registration and login forms now convert emails and usernames to lowercase. Uppercase characters in user credentials are no longer possible.</li>\n\t    \t\t<li>Upon registration, remove all whitespace or null characters from username and email.</li>\n\t    \t\t<li>Changed some styling: removed \"text-transform: uppercase\" which led to username ambiguity.</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\n\t  <div class=\"list-group-item list-group-item-secondary flex-column align-items-start\">\n\t    <div class=\"d-flex w-100 justify-content-between\">\n\t      <h5 class=\"mb-1\">Further development</h5>\n\t      <small class=\"text-muted\">Soon...</small>\n\t    </div>\n\t    <p class=\"mb-1\">The following features are either planned or currently in development and not yet implemented.</p>\n\t    <small>\n\t    \t<ul class=\"timeline-list\">\n\t    \t\t<li>Mobile menu functionality and mobile styling</li>\n\t    \t\t<li>OAuth 2.0 protocol validation (login via social media)</li>\n\t    \t\t<li>User info editing via profile page</li>\n\t    \t\t<li>Check if username or email is already taken</li>\n\t    \t\t<li>Email and password confirmation upon registration</li>\n\t    \t\t<li>Account verification via email</li>\n\t    \t\t<li>Clear local storage if id token has been tampered with</li>\n\t    \t\t<li>Improved notification system</li>\n\t    \t\t<li>Forgot password link</li>\n\t    \t</ul>\n\t    </small>\n\t  </div>\n\t</div>\n\n\t<p id=\"register-invite\">Register or login to begin</p> \n\t\n\t<div>\n\t\t<a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-secondary\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -390,7 +391,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.onLoginSubmit = function () {
         var _this = this;
         var user = {
-            email: this.email,
+            email: this.email.toLowerCase(),
             password: this.password
         };
         // If all info is entered, attempt to login
@@ -655,8 +656,8 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.onRegisterSubmit = function () {
         var _this = this;
         var user = {
-            email: this.email,
-            username: this.username,
+            email: this.email.toLowerCase().replace(/\s/g, ""),
+            username: this.username.toLowerCase().replace(/\s/g, ""),
             password: this.password
         };
         // Make sure user entered all fields
@@ -667,6 +668,16 @@ var RegisterComponent = /** @class */ (function () {
         // Make sure email is in correct format
         if (!this.validateService.validateEmail(user.email)) {
             this.flashMessagesService.show('Please enter a valid email address.', { cssClass: 'alert-danger', timeout: 3000 });
+            return false;
+        }
+        // Make sure password is at least 8 characters
+        if (!this.validateService.validatePasswordLength(user.password)) {
+            this.flashMessagesService.show('Password must be at least 8 characters.', { cssClass: 'alert-danger', timeout: 3000 });
+            return false;
+        }
+        // Make sure password contains a number
+        if (!this.validateService.validatePasswordNumber(user.password)) {
+            this.flashMessagesService.show('Password must contain a number.', { cssClass: 'alert-danger', timeout: 3000 });
             return false;
         }
         // Register user
@@ -842,14 +853,12 @@ var AuthService = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com for production
         return this.http.post('http://localhost:3000/users/register', user, { headers: headers });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com for production
         return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers });
     };
     AuthService.prototype.getProfile = function () {
@@ -858,7 +867,6 @@ var AuthService = /** @class */ (function () {
             'Authorization': this.authToken,
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com for production
         return this.http.get('http://localhost:3000/users/profile', { headers: headers });
     };
     AuthService.prototype.storeUserData = function (token, user) {
@@ -923,7 +931,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ValidateService = /** @class */ (function () {
     function ValidateService() {
     }
-    // Verify that all registration information has been entered
+    // Verify that all registration information has been entered and there are no nulls/spaces
     ValidateService.prototype.validateRegister = function (user) {
         if (user.email == undefined || user.username == undefined || user.password == undefined) {
             return false;
@@ -936,6 +944,25 @@ var ValidateService = /** @class */ (function () {
     ValidateService.prototype.validateEmail = function (email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
+    };
+    // Make sure password is long enough
+    ValidateService.prototype.validatePasswordLength = function (password) {
+        if (password.length >= 8) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    // Make sure password contains a number
+    ValidateService.prototype.validatePasswordNumber = function (password) {
+        var numbers = /[0-9]/g;
+        if (password.match(numbers)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     };
     ValidateService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
