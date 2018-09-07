@@ -853,15 +853,15 @@ var AuthService = /** @class */ (function () {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com:81 for production
-        return this.http.post('http://rickymolnar.com:81/users/register', user, { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com:3000 for production
+        return this.http.post('http://rickymolnar.com:3000/users/register', user, { headers: headers });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com:81 for production
-        return this.http.post('http://rickymolnar.com:81/users/authenticate', user, { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com:3000 for production
+        return this.http.post('http://rickymolnar.com:3000/users/authenticate', user, { headers: headers });
     };
     AuthService.prototype.getProfile = function () {
         this.loadToken();
@@ -869,8 +869,8 @@ var AuthService = /** @class */ (function () {
             'Authorization': this.authToken,
             'Content-Type': 'application/json'
         });
-        // Change to localhost:3000 for development and rickymolnar.com:81 for production
-        return this.http.get('http://rickymolnar.com:81/users/profile', { headers: headers });
+        // Change to localhost:3000 for development and rickymolnar.com:3000 for production
+        return this.http.get('http://rickymolnar.com:3000/users/profile', { headers: headers });
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
