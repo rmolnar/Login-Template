@@ -19,7 +19,7 @@ export class AuthService {
 	    	'Content-Type': 'application/json'
 	    });
 	    // Change to localhost:3000 for development and rickymolnar.com for production
-	    return this.http.post('http://localhost:3000/users/register', user, {headers: headers});
+	    return this.http.post('http://rickymolnar.com/users/register', user, {headers: headers});
 	  }
 
 	authenticateUser(user){
@@ -27,7 +27,7 @@ export class AuthService {
 	    	'Content-Type': 'application/json'
 	    });
 	    // Change to localhost:3000 for development and rickymolnar.com for production
-	    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers});
+	    return this.http.post('http://rickymolnar.com/users/authenticate', user, {headers: headers});
 	}
 
  	getProfile() {
@@ -37,7 +37,7 @@ export class AuthService {
 		      'Content-Type':'application/json'
 		});﻿
 	    // Change to localhost:3000 for development and rickymolnar.com for production
-	    return this.http.get('http://localhost:3000/users/profile', {headers: headers});
+	    return this.http.get('http://rickymolnar.com/users/profile', {headers: headers});
 	}
 
 	storeUserData(token, user){
