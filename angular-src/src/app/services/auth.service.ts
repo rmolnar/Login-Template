@@ -13,19 +13,23 @@ export class AuthService {
 	user: any;
 
   constructor(private http: HttpClient) { }
+  	
+  	/*
+  	Change urls to rickymolnar.com:3000 for production and localhost:3000 for development.
+  	*/
 
 	registerUser(user){
 	    let headers= new HttpHeaders({
 	    	'Content-Type': 'application/json'
 	    });
-	    return this.http.post('http://rickymolnar.com/users/register', user, {headers: headers});
+	    return this.http.post('http://rickymolnar.com:3000/users/register', user, {headers: headers});
 	  }
 
 	authenticateUser(user){
 	    let headers= new HttpHeaders({
 	    	'Content-Type': 'application/json'
 	    });
-	    return this.http.post('http://rickymolnar.com/users/authenticate', user, {headers: headers});
+	    return this.http.post('http://rickymolnar.com:3000/users/authenticate', user, {headers: headers});
 	}
 
  	getProfile() {
@@ -34,7 +38,7 @@ export class AuthService {
 		      'Authorization': this.authToken,
 		      'Content-Type':'application/json'
 		});﻿
-	    return this.http.get('http://rickymolnar.com/users/profile', {headers: headers});
+	    return this.http.get('http://rickymolnar.com:3000/users/profile', {headers: headers});
 	}
 
 	storeUserData(token, user){
