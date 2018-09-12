@@ -958,7 +958,7 @@ var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
         // Change to localhost:3000 for development and rickymolnar.com:3000 for production	
-        this.server = 'http://localhost:3000';
+        this.server = 'http://rickymolnar.com:3000';
     }
     // Ask server to check database if username exists
     AuthService.prototype.checkForUsername = function (username) {

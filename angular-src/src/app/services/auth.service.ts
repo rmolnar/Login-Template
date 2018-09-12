@@ -13,7 +13,7 @@ export class AuthService {
 	user: any;
 
 	// Change to localhost:3000 for development and rickymolnar.com:3000 for production	
-	server = 'http://localhost:3000';
+	server = 'http://rickymolnar.com:3000';
 
   constructor(private http: HttpClient) {} 
 
