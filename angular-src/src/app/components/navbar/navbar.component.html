@@ -1,39 +1,41 @@
-<nav class="navbar navbar-default navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Login Template</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark mb-4">
+  
+  <a class="navbar-brand" [routerLink]="['/']">Login Template</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <!-- Left navbar  -->
-        <ul class="navbar-nav mr-auto">
-          <li [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item">
-            <a class="nav-link" [routerLink]="['/']"><i class="fas fa-home"></i> Home</a>
-          </li>
-        </ul>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
 
-        <!-- Right navbar  -->
-        <ul class="navbar-nav navbar-right ">
-          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Login</a>
-          </li>
-          
-          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item">
-            <a class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Register</a>
-          </li>
+    <!-- Left navbar  -->
+    <ul class="navbar-nav mr-auto">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item" (click)="collapseMobileMenu()">
+        <a class="nav-link" [routerLink]="['/']"><i class="fas fa-home"></i> Home</a>
+      </li>
+    </ul>
 
-          <li *ngIf="authService.loggedIn()" class="nav-item">
-            <a class="nav-link" href="#" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-          </li>
+    <!-- Right navbar  -->
+    <ul class="navbar-nav navbar-right ">
+      <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item" (click)="collapseMobileMenu()">
+        <a class="nav-link" [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </li>
+      
+      <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item" (click)="collapseMobileMenu()">
+        <a class="nav-link" [routerLink]="['/register']"><i class="fas fa-user-plus"></i> Register</a>
+      </li>
 
-          <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item">
-            <a class="nav-link" [routerLink]="['/dashboard']"><i class="fab fa-node-js"></i> Dashboard</a>
-          </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" href="#" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </li>
 
-          <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item">
-            <a class="nav-link" [routerLink]="['/profile']"><i class="fas fa-user-cog"></i> Profile</a>
-          </li>
-        </ul>
+      <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item" (click)="collapseMobileMenu()">
+        <a class="nav-link" [routerLink]="['/dashboard']"><i class="fab fa-node-js"></i> Dashboard</a>
+      </li>
 
-      </div>
-    </nav>
+      <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] ="{exact:true}" class="nav-item" (click)="collapseMobileMenu()">
+        <a class="nav-link" [routerLink]="['/profile']"><i class="fas fa-user-cog"></i> Profile</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

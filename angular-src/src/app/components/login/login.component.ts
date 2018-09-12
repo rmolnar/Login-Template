@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit(){
   	const user = {
-  		email: this.email.toLowerCase(),
+  		email: this.email,
   		password: this.password
   	}
 

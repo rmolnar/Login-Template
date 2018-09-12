@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
 	username: String;
 	email: String;
 	password: String;
+  confirmEmail: String;
+  confirmPassword: String;
 
   constructor(
     private validateService: ValidateService,
@@ -30,9 +32,12 @@ export class RegisterComponent implements OnInit {
 
   onRegisterSubmit(){
   	const user = {
-  		email: this.email.toLowerCase().replace(/\s/g, ""),
-  		username: this.username.toLowerCase().replace(/\s/g, ""),
-  		password: this.password
+  		email: this.email,
+  		username: this.username,
+  		password: this.password,
+      confirmEmail: this.confirmEmail,
+      confirmPassword: this.confirmPassword
+
   	}
 
   	// Make sure user entered all fields
@@ -59,7 +64,41 @@ export class RegisterComponent implements OnInit {
       return false;      
     }
 
-    // Register user
+    // Make sure the user confirms their email
+    if (this.email != this.confirmEmail)
+    {
+      this.flashMessagesService.show('Emails do not match.', {cssClass: 'alert-danger', timeout: 3000});
+      return false;          
+    }
+
+    // Make sure the user confirms their email
+    if (this.password != this.confirmPassword)
+    {
+      this.flashMessagesService.show('Passwords do not match.', {cssClass: 'alert-danger', timeout: 3000});
+      return false;          
+    }
+
+    console.log("Beginning username check...");
+    // Check if username is already taken
+    this.authService.checkForUsername(user).subscribe((result) => {
+      if (result){
+        this.flashMessagesService.show('Username already taken.', {cssClass: 'alert-danger', timeout: 3000});
+        return false;         
+      }
+    });
+
+    console.log("Beginning email check...");
+    // Check if email is already taken
+    this.authService.checkForEmail(user).subscribe((result) => {
+      if (result){
+        this.flashMessagesService.show('Email already taken.', {cssClass: 'alert-danger', timeout: 3000});
+        return false;         
+      }
+    });
+
+
+
+    // If everything checks out, register the user!
     this.authService.registerUser(user).subscribe(data => {
       if((data as any).success){
       this.flashMessagesService.show('Successfully registered user!', {cssClass: 'alert-success', timeout: 3000});

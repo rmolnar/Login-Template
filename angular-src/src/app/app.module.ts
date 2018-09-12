@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 // Import services and guards
 import { ValidateService } from './services/validate.service';
@@ -23,13 +24,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoggedInGuard } from './guards/loggedin.guard';
 
 
+
 // Declare routes
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent, canActivate:[LoggedInGuard]},
   {path:'login', component: LoginComponent, canActivate:[LoggedInGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'forgotpassword', component: ForgotPasswordComponent, canActivate:[LoggedInGuard]} 
 ]
 
 
@@ -44,7 +47,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ForgotPasswordComponent
   ],
 
   // Declare what modules NgModule uses

@@ -5,11 +5,46 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 
+
+// Check if username is taken
+router.post('/checkforusername', (req, res, next) => {
+	const username = req.body.username;
+	console.log("post request received!");
+
+	User.getUserByUsername(username, (err, user) => {
+		if(err) throw err;
+		if(user){
+			console.log("Username found");
+			return res.json({success: true, msg: 'Username exists'});
+		} else {
+			console.log("Username not found");
+			return false;
+		}
+	});
+});
+
+// Check if email is taken
+router.post('/checkforemail', (req, res, next) => {
+	const email = req.body.email;
+	console.log("post request received!");
+
+	User.getUserByEmail(email, (err, user) => {
+		if(err) throw err;
+		if(user){
+			console.log("Email found");
+			return res.json({success: true, msg: 'Email exists'});
+		} else {
+			console.log("Email not found");
+			return false;
+		}
+	});
+});
+
 // Register
 router.post('/register', (req, res, next) => {
 	let newUser = new User({
-		email: req.body.email.toLowerCase().replace(/\s/g, ""),
-		username: req.body.username.toLowerCase().replace(/\s/g, ""),
+		email: req.body.email,
+		username: req.body.username.replace(/\s/g, ""),
 		password: req.body.password
 	});
 
@@ -18,6 +53,7 @@ router.post('/register', (req, res, next) => {
 			res.json({success: false, msg:'Failed to register user.'});
 		} else {
 			res.json({success: true, msg:'User registered'});
+			console.log("User registered: " + newUser.email + " (" + newUser.username + ")");
 		}
 	});
 });
@@ -36,6 +72,7 @@ router.post('/authenticate', (req, res, next) => {
 		User.comparePassword(password, user.password, (err, isMatch) => {
 			if(err) throw err;
 			if(isMatch){
+				console.log(user.username + " logged in.");
 				const token = jwt.sign(user.toJSON(), config.secret, {
 					expiresIn: 604800 // 1 week expiration
 				});
@@ -55,6 +92,7 @@ router.post('/authenticate', (req, res, next) => {
 		});
 	});
 });
+
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {

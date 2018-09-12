@@ -16,13 +16,13 @@ export class ValidateService {
     }
   }
 
-  // Make sure that the email is in the correct format
+  // Check if email is in the correct format
   validateEmail(email) {
   	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   	return re.test(email);
   }
 
-  // Make sure password is long enough
+  // Check if password is long enough
   validatePasswordLength(password) {
     if(password.length >= 8){
       return true;
@@ -31,7 +31,7 @@ export class ValidateService {
     }
   }
 
-  // Make sure password contains a number
+  // Check if password contains a number
   validatePasswordNumber(password) {
     let numbers = /[0-9]/g;
     if(password.match(numbers)) {

@@ -6,7 +6,6 @@
 	<p>First off, a website and a web application are not the same thing, although the line between them can sometimes be quite blurry. A website displays data for the user and is defined by its content while a web application is much more complex and dynamic and is defined by its interaction with the user. Examples of websites include blogs or news sites while examples of web applications include social media or online calendars. This login system was created to serve as a starting point for building robust and scalable web applications.</p>
 	<p>As you navigate around the application, you will notice that no new pages are ever loaded. Although the url in the address bar might change, there are no requests to load a new document from the server or to refresh a page. This is the beauty of a single page application! Navigating through the application and retrieving data from the server is virtually instantaneous as resources are dynamically loaded and added to the current page as necessary. This efficient method of delivering user experiences requires live communication with the backend web server and database, making it much more complex than a normal website.</p>
 
-
 	<h5>What is the MEAN stack?</h5>
 
 	<blockquote class="blockquote">
@@ -34,22 +33,22 @@
 	      <h5 class="mb-1">Application online!</h5>
 	      <small>August 24th, 2018</small>
 	    </div>
-	    <p class="mb-1">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p>
+	    <p class="mb-1">The first prototype was completed and uploaded to a dedicated Linux server running on CentOS.<br/>The initial version implemented the following features:</p><br/>
 	    <small>
 	    	<ul class="timeline-list">
-	    		<li>Set initial layout to the Bootswatch <a href="https://bootswatch.com/lux/">Lux</a> theme</li>
-	    		<li>Home, profile, dashboard, login, and registration pages</li>
-	    		<li>Front-end view routing and navigation in Angular 6</li>
-	    		<li>Highlighting of active page in navbar</li>
-	    		<li>Registration and login forms</li>
-	    		<li>Email format and form completion validation</li>	    		
-	    		<li>Get and post requests to backend Express server</li>
-	    		<li>User authentication</li>
-	    		<li>Password encryption</li>
-	    		<li>Local storage of id tokens to remember users</li>
-	    		<li>Authorization to prevent users without a valid token from accessing certain pages</li>
-	    		<li>Get user information for profile page</li>
-	    		<li>Flash notifications to communicate with the user</li>
+	    		<li>Set initial layout to the Bootswatch <a href="https://bootswatch.com/lux/">Lux</a> theme.</li>
+	    		<li>Home, profile, dashboard, login, and registration pages.</li>
+	    		<li>Front-end view routing and navigation in Angular 6.</li>
+	    		<li>Highlighting of active page in navbar.</li>
+	    		<li>Registration and login forms.</li>
+	    		<li>Email format and form completion validation.</li>	    		
+	    		<li>Get and post requests to backend Express server.</li>
+	    		<li>User authentication.</li>
+	    		<li>Password encryption.</li>
+	    		<li>Local storage of id tokens to remember users.</li>
+	    		<li>Authorization to prevent users without a valid token from accessing certain pages.</li>
+	    		<li>Get user information for profile page.</li>
+	    		<li>Flash notifications to communicate with the user.</li>
 	    	</ul>
 	    </small>
 	  </div>
@@ -59,17 +58,17 @@
 	      <h5 class="mb-1">First major update</h5>
 	      <small>September 7th, 2018</small>
 	    </div>
-	    <p class="mb-1">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p>
+	    <p class="mb-1">I have been actively developing this application since the initial upload. A few features have been added, but most of the changes are content and styling.</p><br/>
 	    <small>
 	    	<ul class="timeline-list">
 	    		<li>The first version of the homepage is now uploaded. I added the introduction, short description, and the development timeline that you're reading now!</li>
-	    		<li>Changed login from being based on username to being based on email address</li>
-	    		<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages</li>
-	    		<li>Completely reworked the login and registration forms so they look a lot nicer</li>
-	    		<li>Styled the site a bit and added the nifty dark gray graident background</li>
-	    		<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is</li>
-	    		<li>Added cute snippet of info to the dashboard page</li>
-	    		<li>Added Font Awesome icons to navigation links</li>
+	    		<li>Changed login from being based on username to being based on email address.</li>
+	    		<li>Added a new guard service to redirect users who are already logged in to the dashboard if they attempt to access the login or registration pages.</li>
+	    		<li>Completely reworked the login and registration forms so they look a lot nicer.</li>
+	    		<li>Styled the site a bit and added the nifty dark gray graident background.</li>
+	    		<li>Changed the user info from full name to first and last name, then completely threw away the name part of the user info because I really don't care what your name is.</li>
+	    		<li>Added cute snippet of info to the dashboard page.</li>
+	    		<li>Added Font Awesome icons to navigation links.</li>
 	    	</ul>
 	    </small>
 	  </div>
@@ -79,15 +78,36 @@
 	      <h5 class="mb-1">Validation update</h5>
 	      <small>September 8, 2018</small>
 	    </div>
-	    <p class="mb-1">Added and fixed features, mostly focusing on user registration/validation.</p>
+	    <p class="mb-1">Added and fixed features, mostly focusing on user registration/validation.</p><br/>
 	    <small>
 	    	<ul class="timeline-list">
 	    		<li>Added server side validation of registration information to prevent funny business from hackers.</li>
 	    		<li>Fixed a bug that caused passport.js to report an error on the profile route.</li>
-	    		<li>Added password requirements (must be at least 8 characters and contain a number)</li>
+	    		<li>Added password requirements (must be at least 8 characters and contain a number).</li>
 	    		<li>Registration and login forms now convert emails and usernames to lowercase. Uppercase characters in user credentials are no longer possible.</li>
 	    		<li>Upon registration, remove all whitespace or null characters from username and email.</li>
 	    		<li>Changed some styling: removed "text-transform: uppercase" which led to username ambiguity.</li>
+	    	</ul>
+	    </small>
+	  </div>
+
+	  <div class="list-group-item list-group-item-primary flex-column align-items-start">
+	    <div class="d-flex w-100 justify-content-between">
+	      <h5 class="mb-1">Second major update</h5>
+	      <small>September XX, 2018</small>
+	    </div>
+	    <p class="mb-1">Added a ton of new features! The app is almost ready for release! 😊</p><br/>
+	    <small>
+	    	<ul class="timeline-list">
+	    		<li>Server now catches bad JSON post requests to prevent hackers from breaking the app.</li>
+	    		<li>Better server side validation of registration info: Emails must be between 8 and 64 characters, must be unique, and will be converted to lowercase and trimmed of trailing whitespace upon submission. Usernames must be between 4 and 20 characters, must be unique, and will be trimmed. Passwords must be between 8 and 64 characters.</li>
+	    		<li>The client now makes requests to the server to check if a username or password is available and reports that to the user.</li>
+	    		<li>Client and server consoles now provide more information upon key activities, such as successful user registration and logins. Console notifications will be added and removed as the app grows.</li>
+	    		<li>Removed Redundant trim and lowercase validation functions from previous update in favor of better methods.</li>
+	    		<li>Added a password recovery page.</li>
+	    		<li>User must now confirm their email and password upon registration.</li>
+	    		<li>Fixed navbar to top of app and styled app for mobile.</li>
+	    		<li>Mobile menu now collapses upon selection.</li>
 	    	</ul>
 	    </small>
 	  </div>
@@ -97,18 +117,13 @@
 	      <h5 class="mb-1">Further development</h5>
 	      <small class="text-muted">Soon...</small>
 	    </div>
-	    <p class="mb-1">The following features are either planned or currently in development and not yet implemented.</p>
+	    <p class="mb-1">The following features are either planned or currently in development and not yet implemented.</p><br/>
 	    <small>
 	    	<ul class="timeline-list">
-	    		<li>Mobile menu functionality and mobile styling</li>
-	    		<li>OAuth 2.0 protocol validation (login via social media)</li>
 	    		<li>User info editing via profile page</li>
-	    		<li>Check if username or email is already taken</li>
-	    		<li>Email and password confirmation upon registration</li>
-	    		<li>Account verification via email</li>
-	    		<li>Clear local storage if id token has been tampered with</li>
-	    		<li>Improved notification system</li>
-	    		<li>Forgot password link</li>
+	    		<li>Improve the notification system</li>
+	    		<li>Send password recovery and account verification emails.</li>
+	    		<li>OAuth 2.0 protocol validation (login via social media)</li>
 	    	</ul>
 	    </small>
 	  </div>

@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick(){
+    this.collapseMobileMenu();
   	this.authService.logout();
   	this.flashMessagesService.show('You are logged out', {
   		cssClass: 'alert-success',
@@ -27,6 +28,14 @@ export class NavbarComponent implements OnInit {
   	});
   	this.router.navigate(['/']);
   	return false;
+  }
+
+  collapseMobileMenu(){
+    var menu = document.getElementById("navbarCollapse");
+
+    if (menu.classList.contains("in")){
+      menu.classList.remove("in");
+    }
   }
 
 }

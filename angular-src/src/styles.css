@@ -2,12 +2,12 @@ body {
 	background: linear-gradient(to right, #303030 0%, #0c0c0c 100%);
 }
 
-.jumbotron {
-	padding-top: 40px;
+.container {
+	margin-top: 100px;
 }
 
-#form-title {
-	color: white;
+.jumbotron {
+	padding-top: 40px;
 }
 
 .flash-message {
@@ -23,4 +23,79 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	text-transform: none;
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+
+#form-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+	color: white;    
+}
+
+.main{
+ 	margin: 50px 15px;
+}
+
+.form-group, label {
+	margin-bottom: 15px;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 11px;
+}
+
+.form-control {
+    height: auto !important;
+    padding: 8px 12px !important;
+}
+
+.input-group {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21) !important;
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21) !important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21) !important;
+}
+
+#form-button {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5px;    
+    margin-top: 28px;
+    padding: 6px 12px;
+}
+
+.form-main-center {
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+    max-width: 500px;
+    padding: 10px 40px;
+	background:#bbb;
+    color: #fff;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+}
+
+@media screen and (max-width: 1024px) {
+	.navbar-right {
+		margin-right: 20px !important;
+	}
+
+	.nav-item {
+		margin-right: 8px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+  .nav-item {
+  	margin-left: 45px;
+  }
+
+  .navbar-brand {
+  	margin-left: 45px;
+  }
 }

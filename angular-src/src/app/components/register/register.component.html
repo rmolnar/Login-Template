@@ -1,6 +1,6 @@
-	<div class="row main">
+<div class="row main">
 	<div class="container">	
-		<div class="main-center">
+		<div class="form-main-center">
 		<h2 id="form-title">Register</h2>			
 			<form (submit)="onRegisterSubmit()">
 
@@ -26,7 +26,7 @@
 					<label for="email" class="cols-sm-2 control-label">Confirm Email</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<input type="text" required="required" class="form-control" name="confirm-email" id="confirm-email"  placeholder="Confirm your Email"/>
+							<input [(ngModel)]="confirmEmail" type="text" required="required" class="form-control" name="confirmEmail" id="confirmEmail"  placeholder="Confirm your Email"/>
 						</div>
 					</div>
 				</div>
@@ -44,13 +44,13 @@
 					<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<input type="password" required="required" class="form-control" name="confirm-password" id="confirm-password"  placeholder="Confirm your Password"/>
+							<input [(ngModel)]="confirmPassword" type="password" required="required" class="form-control" name="confirmPassword" id="confirmPassword"  placeholder="Confirm your Password"/>
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group ">
-					<input type="submit" id="button" class="btn btn-primary btn-lg btn-block" value="Submit">
+					<input type="submit" id="form-button" class="btn btn-primary btn-lg btn-block" value="Submit">
 				</div>			
 			</form>
 		</div>

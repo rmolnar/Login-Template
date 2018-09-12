@@ -7,15 +7,26 @@ const config = require('../config/database');
 const UserSchema = mongoose.Schema({
 	email: {
 		type: String,
-		required: true
+		required: true,
+		lowercase: true,
+		unique: true,
+		trim: true,
+		minlength: 8,
+		maxlength: 64
 	},
 	username: {
 		type: String,
-		required: true
+		required: true,
+		unique: true,
+		trim: true,
+		minlength: 4,
+		maxlength: 20 
 	},
 	password: {
 		type: String,
-		required: true
+		required: true,
+		minlength: 8,
+		maxlength: 64
 	}
 });
 
@@ -25,9 +36,14 @@ module.exports.getUserById = function(id, callback){
 	User.findByID(id, callback);
 }
 
+module.exports.getUserByUsername = function(username, callback){
+	console.log("Searching for username: " + username);	
+	User.findOne({username: username}, callback);
+}
+
 module.exports.getUserByEmail = function(email, callback){
-	const query = {email: email}
-	User.findOne(query, callback);
+	console.log("Searching for email: " + email);	
+	User.findOne({email: email}, callback);
 }
 
 // Repeat validation of user registration info on the server side to prevent any funny business
@@ -38,10 +54,6 @@ module.exports.validateUser = function(user){
 
 	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if(!re.test(user.email)){
-		return false;
-	}
-
-	if(!user.password.length >= 8){
 		return false;
 	}
 
